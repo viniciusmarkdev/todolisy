@@ -28,6 +28,8 @@ public class TaskController {
 	@Autowired
     private ITaskRepository taskRepository;
 	
+
+	
 	@PostMapping("/")
 	public ResponseEntity create(@RequestBody TaskModel taskModel , HttpServletRequest request) 
 	
@@ -63,6 +65,7 @@ public class TaskController {
 
 	@GetMapping("/")
 	public List<TaskModel> list( HttpServletRequest request) {
+		
 		var idUser = request.getAttribute("idUser");
 		var tasks = this.taskRepository.findByIdUser((UUID) idUser);
 		return tasks;
